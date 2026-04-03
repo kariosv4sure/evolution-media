@@ -9,43 +9,43 @@
         background: linear-gradient(135deg, var(--dark) 0%, var(--dark-soft) 100%);
         text-align: center;
     }
-    
+
     .about-header h1 {
         font-size: 3rem;
         margin-bottom: 1rem;
     }
-    
+
     .about-header h1 span {
         color: var(--primary);
     }
-    
+
     .about-header p {
         color: var(--text-muted);
         max-width: 600px;
         margin: 0 auto;
     }
-    
+
     .story-section {
         padding: 4rem 0;
         background: var(--dark-soft);
     }
-    
+
     .story-grid {
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 4rem;
         align-items: center;
     }
-    
+
     .story-image {
         position: relative;
     }
-    
+
     .story-image img {
         width: 100%;
         border-radius: 24px;
     }
-    
+
     .story-badge {
         position: absolute;
         bottom: -20px;
@@ -57,68 +57,68 @@
         color: white;
         box-shadow: 0 10px 30px rgba(0,0,0,0.3);
     }
-    
+
     .story-content h2 {
         font-size: 2.2rem;
         margin-bottom: 1rem;
     }
-    
+
     .story-content h2 span {
         color: var(--primary);
     }
-    
+
     .story-content p {
         color: var(--text-muted);
         margin-bottom: 1rem;
         line-height: 1.7;
     }
-    
+
     .stats-section {
         padding: 4rem 0;
         background: var(--dark);
     }
-    
+
     .stats-grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: 2rem;
         text-align: center;
     }
-    
+
     .stat-item {
         background: var(--gray);
         padding: 2rem;
         border-radius: 20px;
         transition: 0.3s;
     }
-    
+
     .stat-item:hover {
         transform: translateY(-5px);
         border-color: var(--primary);
     }
-    
+
     .stat-number {
         font-size: 3rem;
         font-weight: 800;
         color: var(--primary);
     }
-    
+
     .stat-label {
         color: var(--text-muted);
         margin-top: 0.5rem;
     }
-    
+
     .mission-section {
         padding: 4rem 0;
         background: var(--dark-soft);
     }
-    
+
     .mission-grid {
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 2rem;
     }
-    
+
     .mission-card {
         background: var(--gray);
         padding: 2rem;
@@ -127,12 +127,12 @@
         transition: 0.3s;
         border: 1px solid rgba(255,255,255,0.05);
     }
-    
+
     .mission-card:hover {
         transform: translateY(-5px);
         border-color: var(--primary);
     }
-    
+
     .mission-icon {
         width: 70px;
         height: 70px;
@@ -143,25 +143,25 @@
         justify-content: center;
         margin: 0 auto 1.5rem;
     }
-    
+
     .mission-icon i {
         font-size: 2rem;
         color: var(--primary);
     }
-    
+
     .mission-card h3 {
         margin-bottom: 0.5rem;
     }
-    
+
     .mission-card p {
         color: var(--text-muted);
     }
-    
+
     .values-section {
         padding: 4rem 0;
         background: var(--dark);
     }
-    
+
     .section-tag-center {
         text-align: center;
         color: var(--primary);
@@ -171,14 +171,14 @@
         letter-spacing: 2px;
         font-size: 0.85rem;
     }
-    
+
     .values-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
         gap: 2rem;
         margin-top: 2rem;
     }
-    
+
     .value-card {
         background: var(--gray);
         padding: 2rem;
@@ -186,33 +186,33 @@
         text-align: center;
         transition: 0.3s;
     }
-    
+
     .value-card:hover {
         transform: translateY(-5px);
         background: var(--gray-light);
     }
-    
+
     .value-icon {
         font-size: 2.5rem;
         color: var(--primary);
         margin-bottom: 1rem;
     }
-    
+
     .value-card h3 {
         margin-bottom: 0.5rem;
     }
-    
+
     .value-card p {
         color: var(--text-muted);
         font-size: 0.9rem;
     }
-    
+
     .founder-section {
         padding: 4rem 0;
         background: var(--dark-soft);
         text-align: center;
     }
-    
+
     .founder-card {
         max-width: 600px;
         margin: 0 auto;
@@ -221,42 +221,41 @@
         border-radius: 24px;
         border: 1px solid rgba(255,255,255,0.05);
     }
-    
+
     .founder-card h3 {
         margin-bottom: 0.5rem;
     }
-    
+
     .founder-title {
         color: var(--primary);
         font-weight: 600;
         margin-bottom: 1rem;
     }
-    
+
     .founder-card p {
         color: var(--text-muted);
         line-height: 1.7;
     }
-    
-    /* Responsive */
+
     @media (max-width: 968px) {
         .story-grid {
             grid-template-columns: 1fr;
             gap: 2rem;
             text-align: center;
         }
-        
+
         .stats-grid {
             grid-template-columns: 1fr;
         }
-        
+
         .mission-grid {
             grid-template-columns: 1fr;
         }
-        
+
         .about-header h1 {
             font-size: 2rem;
         }
-        
+
         .story-badge {
             position: relative;
             bottom: 0;
@@ -265,20 +264,20 @@
             display: inline-block;
         }
     }
-    
+
     @media (max-width: 640px) {
         .stat-number {
             font-size: 2rem;
         }
-        
+
         .mission-card {
             padding: 1.5rem;
         }
-        
+
         .value-card {
             padding: 1.5rem;
         }
-        
+
         .founder-card {
             padding: 1.5rem;
         }
@@ -287,7 +286,6 @@
 {% endblock %}
 
 {% block content %}
-<!-- Header -->
 <section class="about-header">
     <div class="container">
         <h1 data-aos="fade-up">About <span>Evolution Media</span></h1>
@@ -295,7 +293,6 @@
     </div>
 </section>
 
-<!-- Story Section -->
 <section class="story-section">
     <div class="container">
         <div class="story-grid">
@@ -306,23 +303,22 @@
             <div class="story-content" data-aos="fade-left">
                 <h2>Our <span>Journey</span></h2>
                 <p>Evolution Media was founded by Emmanuel Okeme, a Computer Science student at Veritas University Abuja. Having mastered the JAMB exam himself, his mission is to teach students the exact system he used to succeed.</p>
-                <p>What started as a vision to help fellow students has grown into a technology-driven platform focused on digital innovation, marketing, and education. We've helped over 500 students score 270+ in JAMB and secured 700+ admissions into top Nigerian universities like UI, OAU, and UNILAG.</p>
+                <p>What started as a vision to help fellow students has grown into a technology-driven platform focused on digital innovation, marketing, and education. We've helped over 15,000 students achieve exam success and secured 15,000+ admissions into top Nigerian universities like UI, OAU, and UNILAG.</p>
                 <p>We're not just a tutorial platform — we're your partners in academic success and digital growth.</p>
             </div>
         </div>
     </div>
 </section>
 
-<!-- Stats Section -->
 <section class="stats-section">
     <div class="container">
         <div class="stats-grid">
             <div class="stat-item" data-aos="zoom-in" data-aos-delay="100">
-                <div class="stat-number" data-count="500">0</div>
-                <div class="stat-label">Students Scored 270+</div>
+                <div class="stat-number" data-count="15000">0</div>
+                <div class="stat-label">Students Trained</div>
             </div>
             <div class="stat-item" data-aos="zoom-in" data-aos-delay="200">
-                <div class="stat-number" data-count="700">0</div>
+                <div class="stat-number" data-count="15000">0</div>
                 <div class="stat-label">Admissions Secured</div>
             </div>
             <div class="stat-item" data-aos="zoom-in" data-aos-delay="300">
@@ -333,7 +329,6 @@
     </div>
 </section>
 
-<!-- Mission & Vision -->
 <section class="mission-section">
     <div class="container">
         <div class="mission-grid">
@@ -355,7 +350,6 @@
     </div>
 </section>
 
-<!-- Core Values -->
 <section class="values-section">
     <div class="container">
         <div class="section-tag-center">Core Values</div>
@@ -385,7 +379,6 @@
     </div>
 </section>
 
-<!-- Founder Section -->
 <section class="founder-section">
     <div class="container">
         <div class="founder-card" data-aos="fade-up">
@@ -397,10 +390,9 @@
 </section>
 
 <script>
-    // Animated counter
     const counters = document.querySelectorAll('.stat-number');
     let counted = false;
-    
+
     function startCounters() {
         if (counted) return;
         counted = true;
@@ -420,7 +412,7 @@
             updateCounter();
         });
     }
-    
+
     const statsSection = document.querySelector('.stats-section');
     if (statsSection) {
         const observer = new IntersectionObserver((entries) => {

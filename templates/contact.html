@@ -9,33 +9,33 @@
         background: linear-gradient(135deg, var(--dark) 0%, var(--dark-soft) 100%);
         text-align: center;
     }
-    
+
     .contact-header h1 {
         font-size: 3rem;
         margin-bottom: 1rem;
     }
-    
+
     .contact-header h1 span {
         color: var(--primary);
     }
-    
+
     .contact-header p {
         color: var(--text-muted);
         max-width: 600px;
         margin: 0 auto;
     }
-    
+
     .contact-section {
         padding: 4rem 0;
         background: var(--dark-soft);
     }
-    
+
     .contact-grid {
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 4rem;
     }
-    
+
     /* Contact Info Cards */
     .info-card {
         background: var(--gray);
@@ -45,12 +45,12 @@
         transition: 0.3s;
         border: 1px solid rgba(255,255,255,0.05);
     }
-    
+
     .info-card:hover {
         transform: translateY(-5px);
         border-color: var(--primary);
     }
-    
+
     .info-icon {
         width: 60px;
         height: 60px;
@@ -61,31 +61,31 @@
         justify-content: center;
         margin-bottom: 1rem;
     }
-    
+
     .info-icon i {
         font-size: 1.8rem;
         color: var(--primary);
     }
-    
+
     .info-card h3 {
         margin-bottom: 0.5rem;
     }
-    
+
     .info-card p {
         color: var(--text-muted);
         margin-bottom: 0.3rem;
     }
-    
+
     .info-card a {
         color: var(--text-muted);
         text-decoration: none;
         transition: 0.3s;
     }
-    
+
     .info-card a:hover {
         color: var(--primary);
     }
-    
+
     /* Contact Form */
     .contact-form {
         background: var(--gray);
@@ -93,26 +93,26 @@
         padding: 2rem;
         border: 1px solid rgba(255,255,255,0.05);
     }
-    
+
     .contact-form h2 {
         margin-bottom: 0.5rem;
     }
-    
+
     .contact-form p {
         color: var(--text-muted);
         margin-bottom: 1.5rem;
     }
-    
+
     .form-group {
         margin-bottom: 1.2rem;
     }
-    
+
     .form-group label {
         display: block;
         margin-bottom: 0.5rem;
         font-weight: 500;
     }
-    
+
     .form-group input,
     .form-group select,
     .form-group textarea {
@@ -126,57 +126,94 @@
         color: var(--text);
         transition: 0.3s;
     }
-    
+
     .form-group input:focus,
     .form-group select:focus,
     .form-group textarea:focus {
         outline: none;
         border-color: var(--primary);
     }
-    
+
     .form-group textarea {
         resize: vertical;
         min-height: 120px;
     }
-    
+
     .submit-btn {
         width: 100%;
         padding: 14px;
         font-size: 1rem;
         justify-content: center;
     }
-    
+
+    /* WhatsApp Channel CTA */
+    .channel-cta {
+        padding: 4rem 0;
+        background: var(--dark);
+    }
+
+    .channel-card {
+        max-width: 600px;
+        margin: 0 auto;
+        background: var(--gray);
+        border-radius: 24px;
+        padding: 2.5rem;
+        text-align: center;
+        border: 1px solid rgba(255,255,255,0.05);
+        transition: 0.3s;
+    }
+
+    .channel-card:hover {
+        transform: translateY(-5px);
+        border-color: var(--primary);
+    }
+
+    .channel-card i {
+        font-size: 3rem;
+        color: var(--primary);
+        margin-bottom: 1rem;
+    }
+
+    .channel-card h3 {
+        margin-bottom: 0.5rem;
+    }
+
+    .channel-card p {
+        color: var(--text-muted);
+        margin-bottom: 1.5rem;
+    }
+
     .map-section {
         padding: 4rem 0;
         background: var(--dark);
     }
-    
+
     .map-container {
         border-radius: 24px;
         overflow: hidden;
         border: 1px solid rgba(255,255,255,0.05);
     }
-    
+
     .map-container iframe {
         width: 100%;
         height: 400px;
         border: none;
         filter: grayscale(0.3) invert(0.9) hue-rotate(180deg);
     }
-    
+
     .social-section {
         padding: 3rem 0;
         background: var(--dark-soft);
         text-align: center;
     }
-    
+
     .social-icons {
         display: flex;
         justify-content: center;
         gap: 1.5rem;
         margin-top: 1.5rem;
     }
-    
+
     .social-icons a {
         width: 50px;
         height: 50px;
@@ -189,37 +226,42 @@
         font-size: 1.3rem;
         transition: 0.3s;
     }
-    
+
     .social-icons a:hover {
         background: var(--primary);
         transform: translateY(-5px);
     }
-    
+
     /* Responsive */
     @media (max-width: 968px) {
         .contact-grid {
             grid-template-columns: 1fr;
             gap: 2rem;
         }
-        
+
         .contact-header h1 {
             font-size: 2rem;
         }
     }
-    
+
     @media (max-width: 640px) {
         .info-card {
             padding: 1.5rem;
         }
-        
+
         .contact-form {
             padding: 1.5rem;
         }
-        
+
         .social-icons a {
             width: 40px;
             height: 40px;
             font-size: 1rem;
+        }
+
+        .channel-card {
+            padding: 1.5rem;
+            margin: 0 16px;
         }
     }
 </style>
@@ -248,7 +290,7 @@
                     <p><a href="https://wa.me/2349121121354">+234 912 112 1354</a></p>
                     <p><a href="https://wa.me/2347015638863">+234 701 563 8863</a></p>
                 </div>
-                
+
                 <div class="info-card">
                     <div class="info-icon">
                         <i class="fas fa-envelope"></i>
@@ -256,7 +298,7 @@
                     <h3>Email Address</h3>
                     <p><a href="mailto:evolutionmedia701@gmail.com">evolutionmedia701@gmail.com</a></p>
                 </div>
-                
+
                 <div class="info-card">
                     <div class="info-icon">
                         <i class="fas fa-clock"></i>
@@ -267,33 +309,33 @@
                     <p>Sunday: Closed</p>
                 </div>
             </div>
-            
+
             <!-- Right: Contact Form -->
             <div data-aos="fade-left">
                 <div class="contact-form">
                     <h2>Send Us a Message</h2>
                     <p>Fill out the form below and we'll connect with you on WhatsApp</p>
-                    
+
                     <div id="successMessage" style="display: none; background: #2ecc71; color: white; padding: 1rem; border-radius: 12px; margin-bottom: 1rem;">
                         <i class="fas fa-check-circle"></i> Redirecting to WhatsApp...
                     </div>
-                    
+
                     <form id="contactForm">
                         <div class="form-group">
                             <label for="name">Full Name *</label>
                             <input type="text" id="name" name="name" required placeholder="Enter your full name">
                         </div>
-                        
+
                         <div class="form-group">
                             <label for="email">Email Address *</label>
                             <input type="email" id="email" name="email" required placeholder="Enter your email address">
                         </div>
-                        
+
                         <div class="form-group">
                             <label for="phone">Phone Number *</label>
                             <input type="tel" id="phone" name="phone" required placeholder="Enter your WhatsApp number">
                         </div>
-                        
+
                         <div class="form-group">
                             <label for="service">Service Interested In *</label>
                             <select id="service" name="service" required>
@@ -304,18 +346,32 @@
                                 <option value="Other">Other</option>
                             </select>
                         </div>
-                        
+
                         <div class="form-group">
                             <label for="message">Message *</label>
                             <textarea id="message" name="message" required placeholder="Tell us how we can help you..."></textarea>
                         </div>
-                        
+
                         <button type="submit" class="btn btn-primary submit-btn">
                             <i class="fab fa-whatsapp"></i> Send via WhatsApp
                         </button>
                     </form>
                 </div>
             </div>
+        </div>
+    </div>
+</section>
+
+<!-- WhatsApp Channel CTA -->
+<section class="channel-cta">
+    <div class="container">
+        <div class="channel-card" data-aos="fade-up">
+            <i class="fab fa-whatsapp"></i>
+            <h3>Join Our WhatsApp Channel</h3>
+            <p>Get real-time updates on JAMB, WAEC, admissions, and exam tips — straight to your phone.</p>
+            <a href="https://whatsapp.com/channel/0029VaZNqxlGpLHZKnr6Po16" target="_blank" class="btn btn-primary" style="display: inline-flex; align-items: center; gap: 8px;">
+                <i class="fab fa-whatsapp" style="font-size: 1rem;"></i> Join Now
+            </a>
         </div>
     </div>
 </section>
@@ -344,31 +400,31 @@
     const contactForm = document.getElementById('contactForm');
     const successMessage = document.getElementById('successMessage');
     const WHATSAPP_NUMBER = '2349121121354';
-    
+
     const serviceMap = {
         'JAMB Tutorial': '📚 JAMB Tutorial',
         'WAEC Preparation': '📝 WAEC Preparation',
         'Advertising Services': '📢 Advertising Services',
         'Other': '❓ Other Inquiry'
     };
-    
+
     if (contactForm) {
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
-            
+
             const name = document.getElementById('name').value.trim();
             const email = document.getElementById('email').value.trim();
             const phone = document.getElementById('phone').value.trim();
             const service = document.getElementById('service').value;
             const message = document.getElementById('message').value.trim();
-            
+
             if (!name || !email || !phone || !service || !message) {
                 alert('Please fill in all fields');
                 return;
             }
-            
+
             const serviceDisplay = serviceMap[service] || service;
-            
+
             const whatsappMessage = `*NEW INQUIRY FROM EVOLUTION MEDIA*
 
 👤 *Name:* ${name}
@@ -378,16 +434,16 @@
 💬 *Message:* ${message}
 ---
 *Sent via Evolution Media Contact Form*`;
-            
+
             const encodedMessage = encodeURIComponent(whatsappMessage);
             const whatsappURL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`;
-            
+
             successMessage.style.display = 'block';
-            
+
             setTimeout(() => {
                 window.open(whatsappURL, '_blank');
                 contactForm.reset();
-                
+
                 setTimeout(() => {
                     successMessage.style.display = 'none';
                 }, 3000);

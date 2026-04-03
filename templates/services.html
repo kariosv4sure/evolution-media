@@ -9,33 +9,47 @@
         background: linear-gradient(135deg, var(--dark) 0%, var(--dark-soft) 100%);
         text-align: center;
     }
-    
+
     .services-header h1 {
         font-size: 3rem;
         margin-bottom: 1rem;
     }
-    
+
     .services-header h1 span {
         color: var(--primary);
     }
-    
+
     .services-header p {
         color: var(--text-muted);
         max-width: 600px;
         margin: 0 auto;
     }
-    
+
     .services-section {
         padding: 4rem 0;
         background: var(--dark-soft);
     }
-    
+
+    .services-visual {
+        max-width: 1000px;
+        margin: 0 auto 4rem auto;
+        text-align: center;
+    }
+
+    .services-visual img {
+        width: 100%;
+        max-width: 800px;
+        border-radius: 24px;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        border: 1px solid rgba(255,255,255,0.1);
+    }
+
     .services-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
         gap: 2rem;
     }
-    
+
     .service-card {
         background: var(--gray);
         border-radius: 24px;
@@ -43,12 +57,12 @@
         transition: 0.3s;
         border: 1px solid rgba(255,255,255,0.05);
     }
-    
+
     .service-card:hover {
         transform: translateY(-8px);
         border-color: var(--primary);
     }
-    
+
     .service-icon {
         width: 70px;
         height: 70px;
@@ -59,28 +73,28 @@
         justify-content: center;
         margin-bottom: 1.5rem;
     }
-    
+
     .service-icon i {
         font-size: 2rem;
         color: var(--primary);
     }
-    
+
     .service-card h3 {
         font-size: 1.5rem;
         margin-bottom: 0.5rem;
     }
-    
+
     .service-card p {
         color: var(--text-muted);
         margin-bottom: 1rem;
         line-height: 1.6;
     }
-    
+
     .service-features {
         list-style: none;
         margin: 1rem 0;
     }
-    
+
     .service-features li {
         display: flex;
         align-items: center;
@@ -89,23 +103,23 @@
         font-size: 0.9rem;
         color: var(--text-muted);
     }
-    
+
     .service-features li i {
         color: var(--primary);
         font-size: 0.8rem;
     }
-    
+
     .service-card .btn {
         margin-top: 1rem;
         width: 100%;
         justify-content: center;
     }
-    
+
     .other-exams {
         padding: 4rem 0;
         background: var(--dark);
     }
-    
+
     .section-tag-center {
         text-align: center;
         color: var(--primary);
@@ -115,14 +129,14 @@
         letter-spacing: 2px;
         font-size: 0.85rem;
     }
-    
+
     .exams-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
         gap: 1.5rem;
         margin-top: 2rem;
     }
-    
+
     .exam-card {
         background: var(--gray);
         padding: 1.5rem;
@@ -131,62 +145,62 @@
         transition: 0.3s;
         border: 1px solid rgba(255,255,255,0.05);
     }
-    
+
     .exam-card:hover {
         transform: translateY(-5px);
         border-color: var(--primary);
     }
-    
+
     .exam-card i {
         font-size: 2rem;
         color: var(--primary);
         margin-bottom: 1rem;
     }
-    
+
     .exam-card h4 {
         margin-bottom: 0.3rem;
     }
-    
+
     .exam-card p {
         font-size: 0.8rem;
         color: var(--text-muted);
     }
-    
+
     .advertising-section {
         padding: 4rem 0;
         background: var(--dark-soft);
     }
-    
+
     .ad-grid {
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 3rem;
         align-items: center;
     }
-    
+
     .ad-image img {
         width: 100%;
         border-radius: 20px;
     }
-    
+
     .ad-content h2 {
         margin-bottom: 1rem;
     }
-    
+
     .ad-content h2 span {
         color: var(--primary);
     }
-    
+
     .ad-content p {
         color: var(--text-muted);
         margin-bottom: 1.5rem;
     }
-    
+
     .ad-features {
         list-style: none;
         margin-bottom: 1.5rem;
     }
-    
+
     .ad-features li {
         display: flex;
         align-items: center;
@@ -194,57 +208,57 @@
         margin-bottom: 0.8rem;
         color: var(--text-muted);
     }
-    
+
     .ad-features li i {
         color: var(--primary);
     }
-    
+
     .cta-section {
         padding: 4rem 0;
         background: linear-gradient(135deg, var(--primary-dark), var(--primary));
         text-align: center;
     }
-    
+
     .cta-section h2 {
         color: white;
         margin-bottom: 1rem;
     }
-    
+
     .cta-section p {
         color: rgba(255,255,255,0.9);
         margin-bottom: 2rem;
     }
-    
+
     .cta-section .btn-primary {
         background: white;
         color: var(--primary-dark);
     }
-    
+
     .cta-section .btn-primary:hover {
         background: var(--dark);
         color: white;
     }
-    
+
     @media (max-width: 968px) {
         .services-header h1 {
             font-size: 2rem;
         }
-        
+
         .ad-grid {
             grid-template-columns: 1fr;
             text-align: center;
         }
-        
+
         .ad-features li {
             justify-content: center;
         }
     }
-    
+
     @media (max-width: 640px) {
         .services-grid {
             grid-template-columns: 1fr;
         }
-        
+
         .exams-grid {
             grid-template-columns: repeat(2, 1fr);
         }
@@ -262,12 +276,17 @@
 
 <section class="services-section">
     <div class="container">
+        <!-- Services Image Banner -->
+        <div class="services-visual" data-aos="fade-up">
+            <img src="{{ url_for('static', filename='images/services.png') }}" alt="Evolution Media Services">
+        </div>
+
         <div class="services-grid">
             <!-- JAMB Tutorial -->
             <div class="service-card" data-aos="fade-up" data-aos-delay="100">
                 <div class="service-icon"><i class="fas fa-university"></i></div>
                 <h3>JAMB Tutorial</h3>
-                <p>Intensive JAMB preparation with proven strategies. Over 500 students scored 270+ in 2025.</p>
+                <p>Intensive JAMB preparation with proven strategies. Over 15,000 students trained.</p>
                 <ul class="service-features">
                     <li><i class="fas fa-check"></i> 20+ years past questions & likely exams</li>
                     <li><i class="fas fa-check"></i> Mock exams & performance tracking</li>
@@ -276,7 +295,7 @@
                 </ul>
                 <a href="{{ url_for('jamb') }}" class="btn btn-outline">Learn More <i class="fas fa-arrow-right"></i></a>
             </div>
-            
+
             <!-- WAEC Preparation -->
             <div class="service-card" data-aos="fade-up" data-aos-delay="200">
                 <div class="service-icon"><i class="fas fa-graduation-cap"></i></div>
@@ -290,7 +309,7 @@
                 </ul>
                 <a href="{{ url_for('waec') }}" class="btn btn-outline">Learn More <i class="fas fa-arrow-right"></i></a>
             </div>
-            
+
             <!-- Advertising Services -->
             <div class="service-card" data-aos="fade-up" data-aos-delay="300">
                 <div class="service-icon"><i class="fas fa-chart-line"></i></div>
@@ -374,7 +393,7 @@
 <section class="cta-section">
     <div class="container">
         <h2 data-aos="fade-up">Ready to Crush Your Exams?</h2>
-        <p data-aos="fade-up">Join Evolution Media and become part of our success story</p>
+        <p data-aos="fade-up">Join over 25,000 successful students who trusted Evolution Media</p>
         <a href="{{ url_for('contact') }}" class="btn btn-primary" data-aos="fade-up">Get Started Today <i class="fas fa-arrow-right"></i></a>
     </div>
 </section>

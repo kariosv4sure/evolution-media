@@ -127,5 +127,66 @@
         }
     </script>
     {% block extra_js %}{% endblock %}
+<!-- Floating WhatsApp Channel Button -->
+<a href="https://whatsapp.com/channel/0029VaZNqxlGpLHZKnr6Po16" 
+   class="whatsapp-float" 
+   target="_blank" 
+   rel="noopener noreferrer">
+    <i class="fab fa-whatsapp"></i>
+    <span class="float-text">Join Channel</span>
+</a>
+
+<style>
+    .whatsapp-float {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background: #25D366;
+        color: white;
+        border-radius: 50px;
+        padding: 12px 20px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 14px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        transition: all 0.3s ease;
+        z-index: 1000;
+        border: none;
+    }
+    
+    .whatsapp-float i {
+        font-size: 24px;
+    }
+    
+    .whatsapp-float:hover {
+        transform: scale(1.05);
+        background: #128C7E;
+        box-shadow: 0 6px 16px rgba(0,0,0,0.4);
+    }
+    
+    @media (max-width: 640px) {
+        .whatsapp-float {
+            padding: 10px 16px;
+            bottom: 15px;
+            right: 15px;
+        }
+        
+        .whatsapp-float .float-text {
+            display: none;
+        }
+        
+        .whatsapp-float i {
+            font-size: 28px;
+        }
+        
+        .whatsapp-float {
+            border-radius: 50%;
+            padding: 14px;
+        }
+    }
+</style>
 </body>
 </html>
