@@ -1,0 +1,381 @@
+{% extends "base.html" %}
+
+{% block title %}Our Services | Evolution Media{% endblock %}
+
+{% block extra_css %}
+<style>
+    .services-header {
+        padding: 6rem 0 3rem;
+        background: linear-gradient(135deg, var(--dark) 0%, var(--dark-soft) 100%);
+        text-align: center;
+    }
+    
+    .services-header h1 {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+    }
+    
+    .services-header h1 span {
+        color: var(--primary);
+    }
+    
+    .services-header p {
+        color: var(--text-muted);
+        max-width: 600px;
+        margin: 0 auto;
+    }
+    
+    .services-section {
+        padding: 4rem 0;
+        background: var(--dark-soft);
+    }
+    
+    .services-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 2rem;
+    }
+    
+    .service-card {
+        background: var(--gray);
+        border-radius: 24px;
+        padding: 2rem;
+        transition: 0.3s;
+        border: 1px solid rgba(255,255,255,0.05);
+    }
+    
+    .service-card:hover {
+        transform: translateY(-8px);
+        border-color: var(--primary);
+    }
+    
+    .service-icon {
+        width: 70px;
+        height: 70px;
+        background: rgba(211, 47, 47, 0.15);
+        border-radius: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1.5rem;
+    }
+    
+    .service-icon i {
+        font-size: 2rem;
+        color: var(--primary);
+    }
+    
+    .service-card h3 {
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .service-card p {
+        color: var(--text-muted);
+        margin-bottom: 1rem;
+        line-height: 1.6;
+    }
+    
+    .service-features {
+        list-style: none;
+        margin: 1rem 0;
+    }
+    
+    .service-features li {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 0.5rem;
+        font-size: 0.9rem;
+        color: var(--text-muted);
+    }
+    
+    .service-features li i {
+        color: var(--primary);
+        font-size: 0.8rem;
+    }
+    
+    .service-card .btn {
+        margin-top: 1rem;
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .other-exams {
+        padding: 4rem 0;
+        background: var(--dark);
+    }
+    
+    .section-tag-center {
+        text-align: center;
+        color: var(--primary);
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-size: 0.85rem;
+    }
+    
+    .exams-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1.5rem;
+        margin-top: 2rem;
+    }
+    
+    .exam-card {
+        background: var(--gray);
+        padding: 1.5rem;
+        border-radius: 20px;
+        text-align: center;
+        transition: 0.3s;
+        border: 1px solid rgba(255,255,255,0.05);
+    }
+    
+    .exam-card:hover {
+        transform: translateY(-5px);
+        border-color: var(--primary);
+    }
+    
+    .exam-card i {
+        font-size: 2rem;
+        color: var(--primary);
+        margin-bottom: 1rem;
+    }
+    
+    .exam-card h4 {
+        margin-bottom: 0.3rem;
+    }
+    
+    .exam-card p {
+        font-size: 0.8rem;
+        color: var(--text-muted);
+    }
+    
+    .advertising-section {
+        padding: 4rem 0;
+        background: var(--dark-soft);
+    }
+    
+    .ad-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+        align-items: center;
+    }
+    
+    .ad-image img {
+        width: 100%;
+        border-radius: 20px;
+    }
+    
+    .ad-content h2 {
+        margin-bottom: 1rem;
+    }
+    
+    .ad-content h2 span {
+        color: var(--primary);
+    }
+    
+    .ad-content p {
+        color: var(--text-muted);
+        margin-bottom: 1.5rem;
+    }
+    
+    .ad-features {
+        list-style: none;
+        margin-bottom: 1.5rem;
+    }
+    
+    .ad-features li {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 0.8rem;
+        color: var(--text-muted);
+    }
+    
+    .ad-features li i {
+        color: var(--primary);
+    }
+    
+    .cta-section {
+        padding: 4rem 0;
+        background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+        text-align: center;
+    }
+    
+    .cta-section h2 {
+        color: white;
+        margin-bottom: 1rem;
+    }
+    
+    .cta-section p {
+        color: rgba(255,255,255,0.9);
+        margin-bottom: 2rem;
+    }
+    
+    .cta-section .btn-primary {
+        background: white;
+        color: var(--primary-dark);
+    }
+    
+    .cta-section .btn-primary:hover {
+        background: var(--dark);
+        color: white;
+    }
+    
+    @media (max-width: 968px) {
+        .services-header h1 {
+            font-size: 2rem;
+        }
+        
+        .ad-grid {
+            grid-template-columns: 1fr;
+            text-align: center;
+        }
+        
+        .ad-features li {
+            justify-content: center;
+        }
+    }
+    
+    @media (max-width: 640px) {
+        .services-grid {
+            grid-template-columns: 1fr;
+        }
+        
+        .exams-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<section class="services-header">
+    <div class="container">
+        <h1 data-aos="fade-up">Our <span>Services</span></h1>
+        <p data-aos="fade-up" data-aos-delay="100">Comprehensive solutions to help you crush JAMB, WAEC, and secure admission</p>
+    </div>
+</section>
+
+<section class="services-section">
+    <div class="container">
+        <div class="services-grid">
+            <!-- JAMB Tutorial -->
+            <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="service-icon"><i class="fas fa-university"></i></div>
+                <h3>JAMB Tutorial</h3>
+                <p>Intensive JAMB preparation with proven strategies. Over 500 students scored 270+ in 2025.</p>
+                <ul class="service-features">
+                    <li><i class="fas fa-check"></i> 20+ years past questions & likely exams</li>
+                    <li><i class="fas fa-check"></i> Mock exams & performance tracking</li>
+                    <li><i class="fas fa-check"></i> Personalized mentorship</li>
+                    <li><i class="fas fa-check"></i> Smart study techniques</li>
+                </ul>
+                <a href="{{ url_for('jamb') }}" class="btn btn-outline">Learn More <i class="fas fa-arrow-right"></i></a>
+            </div>
+            
+            <!-- WAEC Preparation -->
+            <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="service-icon"><i class="fas fa-graduation-cap"></i></div>
+                <h3>WAEC Preparation</h3>
+                <p>Complete WAEC preparation with focus on time management and exam strategies.</p>
+                <ul class="service-features">
+                    <li><i class="fas fa-check"></i> Past question analysis</li>
+                    <li><i class="fas fa-check"></i> Intensive mock exams</li>
+                    <li><i class="fas fa-check"></i> Subject-specific tutoring</li>
+                    <li><i class="fas fa-check"></i> Results tracking</li>
+                </ul>
+                <a href="{{ url_for('waec') }}" class="btn btn-outline">Learn More <i class="fas fa-arrow-right"></i></a>
+            </div>
+            
+            <!-- Advertising Services -->
+            <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="service-icon"><i class="fas fa-chart-line"></i></div>
+                <h3>Advertising Services</h3>
+                <p>Reach your target audience with our proven advertising strategies.</p>
+                <ul class="service-features">
+                    <li><i class="fas fa-check"></i> Social media promotion</li>
+                    <li><i class="fas fa-check"></i> WhatsApp channel growth</li>
+                    <li><i class="fas fa-check"></i> Targeted ad campaigns</li>
+                    <li><i class="fas fa-check"></i> Brand strategy consulting</li>
+                </ul>
+                <a href="{{ url_for('contact') }}" class="btn btn-outline">Get Started <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Other Nigerian Exams -->
+<section class="other-exams">
+    <div class="container">
+        <div class="section-tag-center">Other Exams</div>
+        <h2 style="text-align: center; margin-bottom: 1rem;">We Also Support <span>These Exams</span></h2>
+        <div class="exams-grid">
+            <div class="exam-card" data-aos="zoom-in" data-aos-delay="100">
+                <i class="fas fa-certificate"></i>
+                <h4>NECO</h4>
+                <p>National Examination Council</p>
+            </div>
+            <div class="exam-card" data-aos="zoom-in" data-aos-delay="150">
+                <i class="fas fa-file-alt"></i>
+                <h4>NABTEB</h4>
+                <p>National Business & Technical Exams</p>
+            </div>
+            <div class="exam-card" data-aos="zoom-in" data-aos-delay="200">
+                <i class="fas fa-university"></i>
+                <h4>IJMB</h4>
+                <p>Interim Joint Matriculation Board</p>
+            </div>
+            <div class="exam-card" data-aos="zoom-in" data-aos-delay="250">
+                <i class="fas fa-chalkboard"></i>
+                <h4>JUPEB</h4>
+                <p>Joint Universities Preliminary Board</p>
+            </div>
+            <div class="exam-card" data-aos="zoom-in" data-aos-delay="300">
+                <i class="fas fa-globe"></i>
+                <h4>Cambridge</h4>
+                <p>IGCSE, A/AS Levels</p>
+            </div>
+            <div class="exam-card" data-aos="zoom-in" data-aos-delay="350">
+                <i class="fas fa-book"></i>
+                <h4>NECO GCE</h4>
+                <p>External Examination</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Advertising Showcase -->
+<section class="advertising-section">
+    <div class="container">
+        <div class="ad-grid">
+            <div class="ad-content" data-aos="fade-right">
+                <h2>Take Your Brand <span>Further</span></h2>
+                <p>Our advertising services help businesses, brands, and influencers reach their target audience effectively. From social media campaigns to WhatsApp channel growth, we've got you covered.</p>
+                <ul class="ad-features">
+                    <li><i class="fas fa-check-circle"></i> Targeted social media ads</li>
+                    <li><i class="fas fa-check-circle"></i> WhatsApp channel promotion</li>
+                    <li><i class="fas fa-check-circle"></i> Brand awareness campaigns</li>
+                    <li><i class="fas fa-check-circle"></i> Affordable pricing plans</li>
+                </ul>
+                <a href="{{ url_for('contact') }}" class="btn btn-primary">Advertise With Us <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="ad-image" data-aos="fade-left">
+                <img src="{{ url_for('static', filename='images/ad-offer.png') }}" alt="Advertising with Evolution Media">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="cta-section">
+    <div class="container">
+        <h2 data-aos="fade-up">Ready to Crush Your Exams?</h2>
+        <p data-aos="fade-up">Join Evolution Media and become part of our success story</p>
+        <a href="{{ url_for('contact') }}" class="btn btn-primary" data-aos="fade-up">Get Started Today <i class="fas fa-arrow-right"></i></a>
+    </div>
+</section>
+{% endblock %}

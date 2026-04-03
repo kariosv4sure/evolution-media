@@ -1,0 +1,147 @@
+{% extends "base.html" %}
+
+{% block title %}Server Error | Evolution Media{% endblock %}
+
+{% block extra_css %}
+<style>
+    .error-page {
+        min-height: 80vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 4rem 0;
+        background: linear-gradient(135deg, var(--dark) 0%, var(--dark-soft) 100%);
+    }
+    
+    .error-container {
+        text-align: center;
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 2rem;
+    }
+    
+    .error-code {
+        font-size: 8rem;
+        font-weight: 800;
+        color: var(--primary);
+        font-family: 'Inter', monospace;
+        line-height: 1;
+        margin-bottom: 1rem;
+        text-shadow: 0 0 30px rgba(211, 47, 47, 0.3);
+    }
+    
+    .error-icon {
+        font-size: 5rem;
+        color: var(--primary);
+        margin-bottom: 1rem;
+    }
+    
+    .error-title {
+        font-size: 2rem;
+        color: var(--white);
+        margin-bottom: 1rem;
+    }
+    
+    .error-message {
+        color: var(--text-muted);
+        margin-bottom: 2rem;
+        font-size: 1.1rem;
+    }
+    
+    .error-actions {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    
+    .retry-box {
+        margin-top: 2rem;
+        padding: 1.5rem;
+        background: var(--gray);
+        border-radius: 20px;
+        border: 1px solid rgba(255,255,255,0.05);
+    }
+    
+    .retry-box p {
+        color: var(--text-muted);
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
+    }
+    
+    .auto-refresh {
+        font-size: 0.85rem;
+        color: var(--text-muted);
+        margin-top: 1rem;
+    }
+    
+    .refresh-timer {
+        font-weight: 700;
+        color: var(--primary);
+    }
+    
+    @media (max-width: 640px) {
+        .error-code {
+            font-size: 5rem;
+        }
+        .error-title {
+            font-size: 1.5rem;
+        }
+        .error-message {
+            font-size: 1rem;
+        }
+        .error-actions .btn {
+            width: 100%;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="error-page">
+    <div class="container">
+        <div class="error-container" data-aos="fade-up">
+            <div class="error-icon">
+                <i class="fas fa-exclamation-triangle"></i>
+            </div>
+            <div class="error-code">500</div>
+            <h1 class="error-title">Server Error</h1>
+            <p class="error-message">Something went wrong on our end. Don't worry, our team has been notified and we're working to fix it.</p>
+            <div class="error-actions">
+                <a href="{{ url_for('index') }}" class="btn btn-primary">
+                    <i class="fas fa-home"></i> Back to Home
+                </a>
+                <a href="{{ url_for('contact') }}" class="btn btn-outline">
+                    <i class="fas fa-envelope"></i> Report Issue
+                </a>
+            </div>
+            <div class="retry-box">
+                <i class="fas fa-sync-alt" style="color: var(--primary); margin-right: 8px;"></i>
+                <p>This is usually a temporary issue. Try refreshing the page or come back in a few minutes.</p>
+                <button onclick="location.reload()" class="btn btn-outline" style="padding: 8px 20px;">
+                    <i class="fas fa-redo-alt"></i> Try Again
+                </button>
+                <div class="auto-refresh">
+                    Auto-refreshing in <span id="countdown" class="refresh-timer">10</span> seconds...
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Auto-refresh countdown
+    let seconds = 10;
+    const countdownElement = document.getElementById('countdown');
+    const timer = setInterval(() => {
+        seconds--;
+        if (countdownElement) {
+            countdownElement.textContent = seconds;
+        }
+        if (seconds <= 0) {
+            clearInterval(timer);
+            location.reload();
+        }
+    }, 1000);
+</script>
+{% endblock %}

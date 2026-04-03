@@ -1,0 +1,441 @@
+{% extends "base.html" %}
+
+{% block title %}JAMB Preparation | Evolution Media{% endblock %}
+
+{% block extra_css %}
+<style>
+    .jamb-header {
+        padding: 6rem 0 3rem;
+        background: linear-gradient(135deg, var(--dark) 0%, var(--dark-soft) 100%);
+        text-align: center;
+    }
+    
+    .jamb-header h1 {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+    }
+    
+    .jamb-header h1 span {
+        color: var(--primary);
+    }
+    
+    .jamb-header p {
+        color: var(--text-muted);
+        max-width: 600px;
+        margin: 0 auto;
+    }
+    
+    .services-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 2rem;
+        padding: 4rem 0;
+    }
+    
+    .service-card {
+        background: var(--gray);
+        border-radius: 24px;
+        padding: 2rem;
+        transition: 0.3s;
+        border: 1px solid rgba(255,255,255,0.05);
+    }
+    
+    .service-card:hover {
+        transform: translateY(-8px);
+        border-color: var(--primary);
+    }
+    
+    .service-icon {
+        width: 70px;
+        height: 70px;
+        background: rgba(211, 47, 47, 0.15);
+        border-radius: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1.5rem;
+    }
+    
+    .service-icon i {
+        font-size: 2rem;
+        color: var(--primary);
+    }
+    
+    .service-card h3 {
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .service-card p {
+        color: var(--text-muted);
+        margin-bottom: 1rem;
+    }
+    
+    .service-features {
+        list-style: none;
+        margin: 1rem 0;
+    }
+    
+    .service-features li {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 0.5rem;
+        font-size: 0.9rem;
+        color: var(--text-muted);
+    }
+    
+    .service-features li i {
+        color: var(--primary);
+    }
+    
+    .results-showcase {
+        padding: 4rem 0;
+        background: var(--dark-soft);
+    }
+    
+    .section-tag-center {
+        text-align: center;
+        color: var(--primary);
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-size: 0.85rem;
+    }
+    
+    .results-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-top: 2rem;
+    }
+    
+    .result-card {
+        background: var(--gray);
+        border-radius: 20px;
+        overflow: hidden;
+        transition: 0.3s;
+        border: 1px solid rgba(255,255,255,0.05);
+    }
+    
+    .result-card:hover {
+        transform: translateY(-5px);
+        border-color: var(--primary);
+    }
+    
+    .result-card img {
+        width: 100%;
+        display: block;
+    }
+    
+    .result-info {
+        padding: 1.5rem;
+        text-align: center;
+    }
+    
+    .result-info h4 {
+        margin-bottom: 0.3rem;
+    }
+    
+    .result-info p {
+        color: var(--text-muted);
+        font-size: 0.9rem;
+    }
+    
+    .tutorial-section {
+        padding: 4rem 0;
+        background: var(--dark);
+    }
+    
+    .tutorial-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+        align-items: center;
+    }
+    
+    .tutorial-content h2 {
+        margin-bottom: 1rem;
+    }
+    
+    .tutorial-content h2 span {
+        color: var(--primary);
+    }
+    
+    .tutorial-content p {
+        color: var(--text-muted);
+        margin-bottom: 1.5rem;
+    }
+    
+    .tutorial-features {
+        list-style: none;
+        margin-bottom: 1.5rem;
+    }
+    
+    .tutorial-features li {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 0.8rem;
+        color: var(--text-muted);
+    }
+    
+    .tutorial-features li i {
+        color: var(--primary);
+    }
+    
+    .tutorial-image img {
+        width: 100%;
+        border-radius: 20px;
+    }
+    
+    .faq-section {
+        padding: 4rem 0;
+        background: var(--dark-soft);
+    }
+    
+    .faq-grid {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+    
+    .faq-item {
+        background: var(--gray);
+        border-radius: 16px;
+        margin-bottom: 1rem;
+        overflow: hidden;
+        border: 1px solid rgba(255,255,255,0.05);
+    }
+    
+    .faq-question {
+        padding: 1.2rem 1.5rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        cursor: pointer;
+        font-weight: 600;
+    }
+    
+    .faq-question:hover {
+        background: var(--gray-light);
+    }
+    
+    .faq-question i {
+        transition: transform 0.3s;
+    }
+    
+    .faq-answer {
+        padding: 0 1.5rem;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+        color: var(--text-muted);
+    }
+    
+    .faq-item.active .faq-answer {
+        padding: 0 1.5rem 1.2rem;
+        max-height: 300px;
+    }
+    
+    .faq-item.active .faq-question i {
+        transform: rotate(180deg);
+    }
+    
+    .cta-section {
+        padding: 4rem 0;
+        background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+        text-align: center;
+    }
+    
+    .cta-section h2 {
+        color: white;
+        margin-bottom: 1rem;
+    }
+    
+    .cta-section p {
+        color: rgba(255,255,255,0.9);
+        margin-bottom: 2rem;
+    }
+    
+    @media (max-width: 968px) {
+        .jamb-header h1 {
+            font-size: 2rem;
+        }
+        
+        .tutorial-grid {
+            grid-template-columns: 1fr;
+            text-align: center;
+        }
+        
+        .tutorial-features li {
+            justify-content: center;
+        }
+    }
+    
+    @media (max-width: 640px) {
+        .services-grid {
+            grid-template-columns: 1fr;
+        }
+        
+        .results-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<section class="jamb-header">
+    <div class="container">
+        <h1 data-aos="fade-up">JAMB & <span>UTME Services</span></h1>
+        <p data-aos="fade-up" data-aos-delay="100">Your complete guide to JAMB registration, preparation, and admission success</p>
+    </div>
+</section>
+
+<div class="container">
+    <div class="services-grid">
+        <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="service-icon"><i class="fas fa-id-card"></i></div>
+            <h3>JAMB Registration</h3>
+            <p>Complete JAMB UTME and Direct Entry registration support from start to finish.</p>
+            <ul class="service-features">
+                <li><i class="fas fa-check-circle"></i> Profile Code Generation</li>
+                <li><i class="fas fa-check-circle"></i> UTME/DE e-PIN Purchase</li>
+                <li><i class="fas fa-check-circle"></i> Biometric Capture</li>
+                <li><i class="fas fa-check-circle"></i> O'LEVEL Upload Assistance</li>
+            </ul>
+            <a href="{{ url_for('contact') }}" class="btn btn-outline">Register Now <i class="fas fa-arrow-right"></i></a>
+        </div>
+        
+        <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="service-icon"><i class="fas fa-chart-line"></i></div>
+            <h3>Result Services</h3>
+            <p>Fast and reliable JAMB result checking and document printing services.</p>
+            <ul class="service-features">
+                <li><i class="fas fa-check-circle"></i> Result Checking & Printing</li>
+                <li><i class="fas fa-check-circle"></i> Admission Letter Printing</li>
+                <li><i class="fas fa-check-circle"></i> JAMB Original Result Slip</li>
+                <li><i class="fas fa-check-circle"></i> DE Admission Letter</li>
+            </ul>
+            <a href="{{ url_for('contact') }}" class="btn btn-outline">Check Result <i class="fas fa-arrow-right"></i></a>
+        </div>
+        
+        <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+            <div class="service-icon"><i class="fas fa-cogs"></i></div>
+            <h3>CAPS Assistance</h3>
+            <p>Expert help with JAMB CAPS issues and admission tracking.</p>
+            <ul class="service-features">
+                <li><i class="fas fa-check-circle"></i> CAPS Login & Navigation</li>
+                <li><i class="fas fa-check-circle"></i> Admission Status Monitoring</li>
+                <li><i class="fas fa-check-circle"></i> O'LEVEL Upload Issues</li>
+                <li><i class="fas fa-check-circle"></i> Course Change Requests</li>
+            </ul>
+            <a href="{{ url_for('contact') }}" class="btn btn-outline">Get Help <i class="fas fa-arrow-right"></i></a>
+        </div>
+    </div>
+</div>
+
+<section class="results-showcase">
+    <div class="container">
+        <div class="section-tag-center">Our Success Stories</div>
+        <h2 style="text-align: center; margin-bottom: 1rem;">Real Results From <span>Real Students</span></h2>
+        <div class="results-grid">
+            <div class="result-card" data-aos="flip-left" data-aos-delay="100">
+                <img src="{{ url_for('static', filename='images/jamb-results-2024.png') }}" alt="2024 JAMB Results">
+                <div class="result-info">
+                    <h4>2024 Results</h4>
+                    <p>Over 200 students scored 250+</p>
+                </div>
+            </div>
+            <div class="result-card" data-aos="flip-left" data-aos-delay="200">
+                <img src="{{ url_for('static', filename='images/jamb-results-2025.png') }}" alt="2025 JAMB Results">
+                <div class="result-info">
+                    <h4>2025 Results</h4>
+                    <p>500+ students scored 270+</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="tutorial-section">
+    <div class="container">
+        <div class="tutorial-grid">
+            <div class="tutorial-content" data-aos="fade-right">
+                <h2>Why Choose Our <span>JAMB Tutorial</span>?</h2>
+                <p>Our proven system has helped thousands of students achieve exceptional results. Here's what makes us different:</p>
+                <ul class="tutorial-features">
+                    <li><i class="fas fa-chalkboard-user"></i> <strong>Expert Tutors:</strong> Seasoned educators with proven track records</li>
+                    <li><i class="fas fa-book-open"></i> <strong>Comprehensive Materials:</strong> 20+ years of past questions analyzed</li>
+                    <li><i class="fas fa-chart-simple"></i> <strong>Performance Tracking:</strong> Regular mock exams and assessments</li>
+                    <li><i class="fas fa-clock"></i> <strong>Flexible Schedule:</strong> Weekend and evening classes available</li>
+                </ul>
+                <a href="{{ url_for('contact') }}" class="btn btn-primary">Enroll Now <i class="fas fa-rocket"></i></a>
+            </div>
+            <div class="tutorial-image" data-aos="fade-left">
+                <img src="{{ url_for('static', filename='images/jamb-logo.png') }}" alt="JAMB Tutorial">
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="faq-section">
+    <div class="container">
+        <div class="section-tag-center">FAQs</div>
+        <h2 style="text-align: center; margin-bottom: 2rem;">Frequently Asked <span>Questions</span></h2>
+        <div class="faq-grid">
+            <div class="faq-item" data-aos="fade-up">
+                <div class="faq-question">
+                    <span>How do I get my JAMB profile code?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">Send your NIN to 55019 via SMS (e.g., NIN 12345678901). We can help you complete this process and purchase your e-PIN.</div>
+            </div>
+            <div class="faq-item" data-aos="fade-up">
+                <div class="faq-question">
+                    <span>What's the difference between UTME and Direct Entry?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">UTME is for students with O'LEVEL results seeking 100-level admission. Direct Entry is for those with A'LEVEL, Diploma, or NCE qualifications seeking 200-level admission.</div>
+            </div>
+            <div class="faq-item" data-aos="fade-up">
+                <div class="faq-question">
+                    <span>How can I change my course or institution after registration?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">You can apply for a change of course/institution through JAMB portal. We assist with the process and ensure all requirements are met.</div>
+            </div>
+            <div class="faq-item" data-aos="fade-up">
+                <div class="faq-question">
+                    <span>What is CAPS and how do I check my admission status?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">CAPS is JAMB's Central Admission Processing System. You can check your admission status by logging into your JAMB profile. We help monitor and resolve any CAPS issues.</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="cta-section">
+    <div class="container">
+        <h2 data-aos="fade-up">Ready to Ace JAMB?</h2>
+        <p data-aos="fade-up">Join thousands of successful students who secured admission with our help</p>
+        <a href="{{ url_for('contact') }}" class="btn btn-primary" data-aos="fade-up">Contact Us Today <i class="fas fa-arrow-right"></i></a>
+    </div>
+</section>
+
+<script>
+    const faqItems = document.querySelectorAll('.faq-item');
+    if (faqItems.length > 0) {
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            if (question) {
+                question.addEventListener('click', () => {
+                    item.classList.toggle('active');
+                });
+            }
+        });
+    }
+</script>
+{% endblock %}

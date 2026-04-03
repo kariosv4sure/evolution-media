@@ -1,0 +1,387 @@
+{% extends "base.html" %}
+
+{% block title %}Admin Dashboard | Evolution Media{% endblock %}
+
+{% block extra_css %}
+<style>
+    .admin-header {
+        background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+        padding: 2rem 0;
+        margin-bottom: 2rem;
+    }
+    
+    .admin-header h1 {
+        color: white;
+        margin-bottom: 0.5rem;
+    }
+    
+    .admin-header p {
+        color: rgba(255,255,255,0.9);
+    }
+    
+    .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+    }
+    
+    .stat-card {
+        background: var(--gray);
+        border-radius: 20px;
+        padding: 1.5rem;
+        text-align: center;
+        transition: 0.3s;
+        border: 1px solid rgba(255,255,255,0.05);
+    }
+    
+    .stat-card:hover {
+        transform: translateY(-5px);
+        border-color: var(--primary);
+    }
+    
+    .stat-icon {
+        width: 50px;
+        height: 50px;
+        background: rgba(211, 47, 47, 0.15);
+        border-radius: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 1rem;
+    }
+    
+    .stat-icon i {
+        font-size: 1.5rem;
+        color: var(--primary);
+    }
+    
+    .stat-number {
+        font-size: 2rem;
+        font-weight: 800;
+        color: var(--primary);
+    }
+    
+    .stat-label {
+        color: var(--text-muted);
+        font-size: 0.85rem;
+        margin-top: 0.5rem;
+    }
+    
+    .section-card {
+        background: var(--gray);
+        border-radius: 20px;
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+        border: 1px solid rgba(255,255,255,0.05);
+    }
+    
+    .section-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1.5rem;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+    
+    .section-header h3 {
+        margin-bottom: 0;
+    }
+    
+    .user-table, .chat-table {
+        width: 100%;
+        overflow-x: auto;
+    }
+    
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    
+    th, td {
+        padding: 12px;
+        text-align: left;
+        border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    
+    th {
+        color: var(--primary);
+        font-weight: 600;
+    }
+    
+    td {
+        color: var(--text-muted);
+    }
+    
+    .badge-active {
+        background: #2ecc71;
+        color: white;
+        padding: 4px 12px;
+        border-radius: 60px;
+        font-size: 0.7rem;
+        font-weight: 600;
+    }
+    
+    .badge-inactive {
+        background: #e74c3c;
+        color: white;
+        padding: 4px 12px;
+        border-radius: 60px;
+        font-size: 0.7rem;
+        font-weight: 600;
+    }
+    
+    .action-btn {
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 5px 10px;
+        border-radius: 8px;
+        transition: 0.3s;
+        margin: 0 2px;
+    }
+    
+    .action-btn.view {
+        color: #3498db;
+    }
+    
+    .action-btn.view:hover {
+        background: rgba(52, 152, 219, 0.2);
+    }
+    
+    .action-btn.toggle {
+        color: #f39c12;
+    }
+    
+    .action-btn.toggle:hover {
+        background: rgba(243, 156, 18, 0.2);
+    }
+    
+    .action-btn.delete {
+        color: #e74c3c;
+    }
+    
+    .action-btn.delete:hover {
+        background: rgba(231, 76, 60, 0.2);
+    }
+    
+    .growth-chart {
+        margin-top: 1rem;
+    }
+    
+    .chart-bar {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 0.8rem;
+    }
+    
+    .chart-label {
+        width: 80px;
+        font-size: 0.8rem;
+        color: var(--text-muted);
+    }
+    
+    .bar-container {
+        flex: 1;
+        height: 30px;
+        background: var(--dark-soft);
+        border-radius: 8px;
+        overflow: hidden;
+    }
+    
+    .bar-fill {
+        height: 100%;
+        background: var(--primary);
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        padding-right: 10px;
+        color: white;
+        font-size: 0.7rem;
+        font-weight: 600;
+    }
+    
+    @media (max-width: 768px) {
+        .stats-grid {
+            grid-template-columns: 1fr;
+        }
+        
+        .section-header {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        
+        th, td {
+            padding: 8px;
+            font-size: 0.8rem;
+        }
+        
+        .action-btn {
+            padding: 4px 8px;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="admin-header">
+    <div class="container">
+        <h1 data-aos="fade-up">Admin Dashboard</h1>
+        <p data-aos="fade-up" data-aos-delay="100">Welcome back, {{ current_user.username }}. Manage users, monitor activity, and track growth.</p>
+    </div>
+</div>
+
+<section style="padding-bottom: 4rem;">
+    <div class="container">
+        <!-- Stats Grid -->
+        <div class="stats-grid" data-aos="fade-up">
+            <div class="stat-card">
+                <div class="stat-icon"><i class="fas fa-users"></i></div>
+                <div class="stat-number">{{ total_users }}</div>
+                <div class="stat-label">Total Users</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon"><i class="fas fa-comments"></i></div>
+                <div class="stat-number">{{ total_chats }}</div>
+                <div class="stat-label">Total Chats</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon"><i class="fas fa-user-check"></i></div>
+                <div class="stat-number">{{ active_today }}</div>
+                <div class="stat-label">Active Today</div>
+            </div>
+        </div>
+        
+        <!-- Recent Users -->
+        <div class="section-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="section-header">
+                <h3>Recent Users</h3>
+                <a href="{{ url_for('admin_users') }}" class="btn btn-outline" style="padding: 8px 20px;">View All Users <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="user-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Username</th>
+                            <th>Email</th>
+                            <th>Joined</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for user in recent_users %}
+                        <tr>
+                            <td>{{ user.username }}</td>
+                            <td>{{ user.email }}</td>
+                            <td>{{ user.created_at.strftime('%b %d, %Y') if user.created_at else 'N/A' }}</td>
+                            <td>
+                                {% if user.is_active %}
+                                    <span class="badge-active">Active</span>
+                                {% else %}
+                                    <span class="badge-inactive">Inactive</span>
+                                {% endif %}
+                            </td>
+                            <td>
+                                <a href="{{ url_for('admin_user_chats', user_id=user.id) }}" class="action-btn view" title="View Chats">
+                                    <i class="fas fa-comment-dots"></i>
+                                </a>
+                                <button onclick="toggleUser({{ user.id }}, this)" class="action-btn toggle" title="Toggle Status">
+                                    <i class="fas fa-power-off"></i>
+                                </button>
+                                <button onclick="deleteUser({{ user.id }})" class="action-btn delete" title="Delete User">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <!-- Recent Chats -->
+        <div class="section-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="section-header">
+                <h3>Recent Chats</h3>
+            </div>
+            <div class="chat-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>User</th>
+                            <th>Message</th>
+                            <th>Time</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for chat in recent_chats %}
+                        <tr>
+                            <td>{{ chat.user.username if chat.user else 'Unknown' }}</td>
+                            <td style="max-width: 300px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+                                {{ chat.user_message[:60] }}{% if chat.user_message|length > 60 %}...{% endif %}
+                            </td>
+                            <td>{{ chat.created_at.strftime('%b %d, %I:%M %p') }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <!-- User Growth Chart -->
+        {% if user_growth %}
+        <div class="section-card" data-aos="fade-up" data-aos-delay="300">
+            <div class="section-header">
+                <h3>User Growth (Last 7 Days)</h3>
+            </div>
+            <div class="growth-chart">
+                {% for day in user_growth %}
+                <div class="chart-bar">
+                    <div class="chart-label">{{ day.date }}</div>
+                    <div class="bar-container">
+                        <div class="bar-fill" style="width: {{ (day.count / (user_growth|map(attribute='count')|max) * 100) if user_growth|map(attribute='count')|max > 0 else 0 }}%;">
+                            {{ day.count }}
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</section>
+
+<script>
+    function toggleUser(userId, btn) {
+        if (confirm('Toggle user status?')) {
+            fetch(`/admin/users/${userId}/toggle`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        location.reload();
+                    } else {
+                        alert('Error toggling user');
+                    }
+                });
+        }
+    }
+    
+    function deleteUser(userId) {
+        if (confirm('Are you sure? This will delete all user data including chats.')) {
+            fetch(`/admin/users/${userId}/delete`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        location.reload();
+                    } else {
+                        alert('Error deleting user');
+                    }
+                });
+        }
+    }
+</script>
+{% endblock %}

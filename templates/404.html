@@ -1,0 +1,140 @@
+{% extends "base.html" %}
+
+{% block title %}Page Not Found | Evolution Media{% endblock %}
+
+{% block extra_css %}
+<style>
+    .error-page {
+        min-height: 80vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 4rem 0;
+        background: linear-gradient(135deg, var(--dark) 0%, var(--dark-soft) 100%);
+    }
+    
+    .error-container {
+        text-align: center;
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 2rem;
+    }
+    
+    .error-code {
+        font-size: 8rem;
+        font-weight: 800;
+        color: var(--primary);
+        font-family: 'Inter', monospace;
+        line-height: 1;
+        margin-bottom: 1rem;
+        text-shadow: 0 0 30px rgba(211, 47, 47, 0.3);
+    }
+    
+    .error-icon {
+        font-size: 5rem;
+        color: var(--primary);
+        margin-bottom: 1rem;
+    }
+    
+    .error-title {
+        font-size: 2rem;
+        color: var(--white);
+        margin-bottom: 1rem;
+    }
+    
+    .error-message {
+        color: var(--text-muted);
+        margin-bottom: 2rem;
+        font-size: 1.1rem;
+    }
+    
+    .error-actions {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    
+    .suggestions {
+        margin-top: 2rem;
+        padding-top: 2rem;
+        border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    
+    .suggestions h4 {
+        color: var(--white);
+        margin-bottom: 1rem;
+    }
+    
+    .suggestions ul {
+        list-style: none;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+    }
+    
+    .suggestions li a {
+        color: var(--text-muted);
+        text-decoration: none;
+        transition: 0.3s;
+        padding: 0.5rem 1rem;
+        background: var(--gray);
+        border-radius: 60px;
+        font-size: 0.9rem;
+        display: inline-block;
+    }
+    
+    .suggestions li a:hover {
+        background: var(--primary);
+        color: var(--white);
+        transform: translateY(-2px);
+    }
+    
+    @media (max-width: 640px) {
+        .error-code {
+            font-size: 5rem;
+        }
+        .error-title {
+            font-size: 1.5rem;
+        }
+        .error-message {
+            font-size: 1rem;
+        }
+        .error-actions .btn {
+            width: 100%;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="error-page">
+    <div class="container">
+        <div class="error-container" data-aos="fade-up">
+            <div class="error-icon">
+                <i class="fas fa-compass"></i>
+            </div>
+            <div class="error-code">404</div>
+            <h1 class="error-title">Page Not Found</h1>
+            <p class="error-message">Oops! The page you're looking for seems to have wandered off. It might have been moved, deleted, or never existed.</p>
+            <div class="error-actions">
+                <a href="{{ url_for('index') }}" class="btn btn-primary">
+                    <i class="fas fa-home"></i> Back to Home
+                </a>
+                <a href="{{ url_for('contact') }}" class="btn btn-outline">
+                    <i class="fas fa-envelope"></i> Contact Support
+                </a>
+            </div>
+            <div class="suggestions">
+                <h4>You might want to try:</h4>
+                <ul>
+                    <li><a href="{{ url_for('jamb') }}">JAMB Preparation</a></li>
+                    <li><a href="{{ url_for('waec') }}">WAEC Success</a></li>
+                    <li><a href="{{ url_for('services') }}">All Services</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
